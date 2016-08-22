@@ -1,0 +1,51 @@
+{#
+/**
+ * Lost and Found plugin for Craft CMS
+ *
+ * Lost and Found Settings.twig
+ *
+ * @author    Piccirilli Dorsey, Inc.
+ * @copyright Copyright (c) 2016 Piccirilli Dorsey, Inc.
+ * @link      http://picdorsey.com
+ * @package   LostAndFound
+ * @since     1.0.0
+ */
+#}
+
+{% import '_includes/forms' as forms %}
+{%- set options = [] %}
+{%- set fields = craft.fields.getAllFields() %}
+
+{% for field in fields %}
+    {% set options = options|merge([{
+        label: field.name|t,
+        value: field.handle|t
+    }]) %}
+{% endfor %}
+
+{{ forms.selectField({
+    label: 'Old URL',
+    instructions: 'Select which field contains the entrie\'s old url.',
+    id: 'oldUrl',
+    name: 'oldUrl',
+    options: options,
+    value: settings['oldUrl']|default('oldUrl')
+}) }}
+
+{{ forms.selectField({
+    label: 'Redirect Type',
+    instructions: 'What kind of http status code to send with the redirecting page.',
+    id: 'redirectType',
+    name: 'redirectType',
+    options: [
+        {
+            label: '301 (Moved Permanently)',
+            value: 301
+        },
+        {
+            label: '302 (Moved Temporarily)',
+            value: 302
+        }
+    ],
+    value: settings['redirectType']|default('302')
+}) }}
