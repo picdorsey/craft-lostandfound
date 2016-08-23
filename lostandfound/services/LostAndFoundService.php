@@ -46,7 +46,7 @@ class LostAndFoundService extends BaseApplicationComponent
         $url = $entry->getUrl();
         $redirectType = (int)craft()->plugins->getPlugin('lostAndFound')->getSettings()->redirectType;
 
-        header('Location: ' . $url, TRUE, $redirectType);
+        craft()->request->redirect($url, TRUE, $redirectType);
     }
 
 }
