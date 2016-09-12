@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2016 Piccirilli Dorsey, Inc.
  * @link      http://picdorsey.com
  * @package   LostAndFound
- * @since     1.0.0
+ * @since     1.0.1
  */
 
 namespace Craft;
@@ -26,7 +26,7 @@ class LostAndFoundService extends BaseApplicationComponent
         $oldUrl = craft()->plugins->getPlugin('lostAndFound')->getSettings()->oldUrl;
 
         $criteria = craft()->elements->getCriteria(ElementType::Entry);
-        $criteria->search = $oldUrl . ':*' . $url . '*';
+        $criteria->search = $oldUrl . ':' . $url;
 
         return $criteria->find();
     }

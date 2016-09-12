@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2016 Piccirilli Dorsey, Inc.
  * @link      http://picdorsey.com
  * @package   LostAndFound
- * @since     1.0.0
+ * @since     1.0.1
  */
 
 namespace Craft;
@@ -59,7 +59,7 @@ class LostAndFoundPlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return '1.0.0';
+        return '1.0.1';
     }
 
     /**
